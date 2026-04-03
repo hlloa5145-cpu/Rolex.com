@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROLEX - ملفي الشخصي</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-light: #f8fafb;
+            --white: #ffffff;
+            --dark-grey: #333333;
+            --sky-blue: #00a8ff;
+            --border-color: #edf2f7;
+            --glow-blue: rgba(0, 168, 255, 0.4);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--dark-grey);
+            margin: 0;
+            padding-bottom: 90px;
+        }
+
+        /* رأس الصفحة الشخصية */
+        .profile-header {
+            background: var(--white);
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .user-avatar {
+            width: 80px;
+            height: 80px;
+            background: var(--sky-blue);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 35px;
+            margin: 0 auto 15px;
+            box-shadow: 0 4px 15px var(--glow-blue);
+        }
+
+        .user-info h2 { margin: 5px 0; font-size: 20px; }
+        .user-info p { color: #888; font-size: 14px; margin: 0; }
+
+        /* القائمة */
+        .menu-list {
+            padding: 20px;
+        }
+
+        .menu-item {
+            background: var(--white);
+            display: flex;
+            align-items: center;
+            padding: 18px;
+            margin-bottom: 12px;
+            border-radius: 15px;
+            text-decoration: none;
+            color: var(--dark-grey);
+            border: 1px solid var(--border-color);
+            transition: 0.2s;
+        }
+
+        .menu-item:active { transform: scale(0.98); background: #f0f4f8; }
+
+        .menu-item i {
+            width: 35px;
+            font-size: 18px;
+            color: var(--sky-blue);
+        }
+
+        .menu-item span { flex: 1; font-weight: 500; }
+        .menu-item .arrow { color: #ccc; font-size: 12px; }
+
+        /* زر الدعم الفني اللامع في الصفحة */
+        .support-card {
+            background: var(--white);
+            margin: 20px;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            border: 2px dashed var(--sky-blue);
+        }
+
+        .btn-support {
+            display: inline-block;
+            background: var(--sky-blue);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 10px;
+            box-shadow: 0 0 0 0 var(--glow-blue);
+            animation: pulse-blue 2s infinite;
+        }
+
+        @keyframes pulse-blue {
+            0% { box-shadow: 0 0 0 0 var(--glow-blue); }
+            70% { box-shadow: 0 0 0 15px rgba(0, 168, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 168, 255, 0); }
+        }
+
+        /* شريط التنقل السفلي */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: var(--white);
+            display: flex;
+            justify-content: space-around;
+            padding: 12px 0;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .nav-item { text-align: center; color: #aaa; text-decoration: none; font-size: 12px; }
+        .nav-item.active { color: var(--sky-blue); }
+        .nav-item i { font-size: 22px; display: block; margin-bottom: 5px; }
+    </style>
+</head>
+<body>
+
+    <div class="profile-header">
+        <div class="user-avatar"><i class="fas fa-user-shield"></i></div>
+        <div class="user-info">
+            <h2 id="display-id">ID: 100254</h2>
+            <p id="display-status">حالة الحساب: <span style="color: #f39c12;">قيد المراجعة</span></p>
+        </div>
+    </div>
+
+    <div class="menu-list">
+        <a href="kyc.html" class="menu-item">
+            <i class="fas fa-id-card"></i>
+            <span>توثيق الهوية (الأصول)</span>
+            <i class="fas fa-chevron-left arrow"></i>
+        </a>
+
+        <a href="change-password.html" class="menu-item">
+            <i class="fas fa-key"></i>
+            <span>تغيير كلمة المرور</span>
+            <i class="fas fa-chevron-left arrow"></i>
+        </a>
+
+        <a href="about.html" class="menu-item">
+            <i class="fas fa-info-circle"></i>
+            <span>حول منصة ROLEX</span>
+            <i class="fas fa-chevron-left arrow"></i>
+        </a>
+
+        <a href="legal.html" class="menu-item">
+            <i class="fas fa-certificate"></i>
+            <span>شهادات التوثيق القانونية</span>
+            <i class="fas fa-chevron-left arrow"></i>
+        </a>
+    </div>
+
+    <div class="support-card">
+        <p>هل تواجه مشكلة في جمع الأصول؟</p>
+        <a href="https://t.me/Btcun1995" target="_blank" class="btn-support">
+            <i class="fab fa-telegram-plane"></i> تواصل مع الدعم الفني
+        </a>
+    </div>
+
+    <nav class="bottom-nav">
+        <a href="prices.html" class="nav-item"><i class="fas fa-chart-line"></i>الأسعار</a>
+        <a href="trade.html" class="nav-item"><i class="fas fa-exchange-alt"></i>التداول</a>
+        <a href="tasks.html" class="nav-item"><i class="fas fa-tasks"></i>المهمة</a>
+        <a href="profile.html" class="nav-item active"><i class="fas fa-user"></i>ملفي الشخصي</a>
+    </nav>
+
+</body>
+</html>
