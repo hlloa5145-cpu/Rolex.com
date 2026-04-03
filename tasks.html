@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROLEX - الأصول والمهام</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-light: #f4f7f6;
+            --white: #ffffff;
+            --grey-text: #5a5a5a;
+            --sky-blue: #00a8ff;
+            --soft-blue: #e3f2fd;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--grey-text);
+            margin: 0;
+            padding-bottom: 80px; /* مساحة للشريط السفلي */
+        }
+
+        /* رأس الصفحة */
+        .header {
+            background: var(--white);
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-bottom: 2px solid var(--soft-blue);
+        }
+
+        .header h1 {
+            color: var(--sky-blue);
+            margin: 0;
+            font-size: 24px;
+            letter-spacing: 1px;
+        }
+
+        /* كرت عرض الأصول */
+        .assets-card {
+            background: linear-gradient(135deg, var(--sky-blue), #00d2ff);
+            margin: 20px;
+            padding: 30px;
+            border-radius: 20px;
+            color: white;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0, 168, 255, 0.3);
+        }
+
+        .assets-card h2 { font-size: 16px; opacity: 0.9; margin: 0; }
+        .assets-card .balance { font-size: 36px; font-weight: bold; margin: 10px 0; }
+
+        /* قسم المهام */
+        .task-section {
+            padding: 20px;
+        }
+
+        .task-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid #eee;
+        }
+
+        .task-info { text-align: center; margin-bottom: 15px; }
+        .task-info h3 { margin: 5px 0; color: #333; }
+
+        /* زر الجمع */
+        .collect-btn {
+            background: var(--sky-blue);
+            color: white;
+            border: none;
+            padding: 12px 40px;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            width: 80%;
+        }
+
+        .collect-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        /* الشريط السفلي */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: var(--white);
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            box-shadow: 0 -2px 15px rgba(0,0,0,0.05);
+            border-top: 1px solid #eee;
+        }
+
+        .nav-item {
+            text-align: center;
+            color: #aaa;
+            text-decoration: none;
+            font-size: 12px;
+            transition: 0.3s;
+        }
+
+        .nav-item.active { color: var(--sky-blue); }
+        .nav-item i { font-size: 20px; display: block; margin-bottom: 4px; }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>ROLEX</h1>
+    </div>
+
+    <div class="assets-card">
+        <h2>إجمالي الأصول المتراكمة</h2>
+        <div class="balance" id="asset-balance">0.00</div>
+        <p>الربح التراكمي قيد التشغيل 🚀</p>
+    </div>
+
+    <div class="task-section">
+        <div class="task-card">
+            <div class="task-info">
+                <i class="fab fa-youtube" style="color: red; font-size: 40px;"></i>
+                <h3>مهمة جمع الأصول اليومية</h3>
+                <p id="timer-text">المهمة القادمة في موعدها المحدد</p>
+            </div>
+            <button class="collect-btn" id="btn-collect" disabled onclick="processCollection()">جمع الأصول الآن</button>
+        </div>
+    </div>
+
+    <nav class="bottom-nav">
+        <a href="prices.html" class="nav-item"><i class="fas fa-chart-line"></i>أسعار العملات</a>
+        <a href="trade.html" class="nav-item"><i class="fas fa-exchange-alt"></i>التداول</a>
+        <a href="tasks.html" class="nav-item active"><i class="fas fa-tasks"></i>المهمة</a>
+        <a href="profile.html" class="nav-item"><i class="fas fa-user"></i>ملفي الشخصي</a>
+    </nav>
+
+    <script>
+        // دالة فحص الوقت (الساعة 1، 4، 8)
+        function updateTaskStatus() {
+            const now = new Date();
+            const hour = now.getHours();
+            const btn = document.getElementById('btn-collect');
+            const timerText = document.getElementById('timer-text');
+
+            // الساعات المطلوبة (1، 13، 16، 20) لتغطية 1 و 4 و 8
+            const activeHours = [1, 13, 16, 20];
+
+            if (activeHours.includes(hour)) {
+                btn.disabled = false;
+                timerText.innerText = "المهمة متاحة! اضغط للجمع";
+                timerText.style.color = "#00a8ff";
+            } else {
+                btn.disabled = true;
+                timerText.innerText = "المهمة القادمة الساعة 1، 4، أو 8";
+                timerText.style.color = "#aaa";
+            }
+        }
+
+        // تشغيل الفحص كل دقيقة
+        setInterval(updateTaskStatus, 60000);
+        updateTaskStatus();
+
+        // منطق الجمع التراكمي (مثال)
+        function processCollection() {
+            alert("تم إضافة الأصول بنجاح إلى رصيدك التراكمي!");
+            // هنا يتم الربط مع Supabase لإضافة الأصول فعلياً
+        }
+    </script>
+</body>
+</html>
