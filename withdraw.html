@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>ROLEX - سحب</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { font-family: sans-serif; background: #f4f7f6; margin: 0; padding-bottom: 80px; text-align: center; }
+        .card { background: white; margin: 15px; padding: 20px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        input { width: 90%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 8px; }
+        .btn { background: #00a8ff; color: white; border: none; padding: 12px 30px; border-radius: 10px; width: 90%; font-weight: bold; }
+        .bottom-nav { position: fixed; bottom: 0; width: 100%; background: #fff; display: flex; justify-content: space-around; padding: 10px 0; border-top: 1px solid #eee; }
+        .nav-item { color: #aaa; text-decoration: none; font-size: 11px; }
+    </style>
+</head>
+<body onload="loadHistory('سحب', 'with-hist')">
+    <div style="padding:15px; background:#fff; color:#00a8ff; font-weight:bold; border-bottom:1px solid #eee;">سحب الأصول</div>
+    
+    <div class="card">
+        <h4>طلب سحب جديد</h4>
+        <input type="number" id="w-amount" placeholder="المبلغ المطلوب سحبه">
+        <input type="text" id="w-wallet" placeholder="عنوان محفظتك (TRC20)">
+        <button class="btn" onclick="submitTransaction('سحب', document.getElementById('w-amount').value, document.getElementById('w-wallet').value)">تأكيد السحب</button>
+    </div>
+
+    <div class="card">
+        <h4>سجل السحوبات</h4>
+        <table style="width:100%; border-collapse: collapse;">
+            <tbody id="with-hist"></tbody>
+        </table>
+    </div>
+
+    <nav class="bottom-nav">
+        <a href="deposit.html" class="nav-item"><i class="fas fa-wallet" style="display:block; font-size:20px;"></i>شحن</a>
+        <a href="withdraw.html" class="nav-item" style="color:#00a8ff;"><i class="fas fa-university" style="display:block; font-size:20px;"></i>سحب</a>
+        <a href="tasks.html" class="nav-item"><i class="fas fa-tasks" style="display:block; font-size:20px;"></i>المهمة</a>
+        <a href="profile.html" class="nav-item"><i class="fas fa-user" style="display:block; font-size:20px;"></i>ملفي</a>
+    </nav>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="api.js"></script>
+</body>
+</html>
