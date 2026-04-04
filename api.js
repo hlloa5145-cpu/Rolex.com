@@ -1,6 +1,6 @@
 // بيانات الاتصال بمنصة ROLEX على Supabase
 const SUPABASE_URL = 'https://tzhosluaxnlhaqhtpcqn.supabase.co';
-const SUPABASE_KEY = 'EyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR6aG9zbHVheG5saGFxaHRwY3FuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUyNDE3MjMsImV4cCI6MjA5MDgxNzcyM30.XK8gPQZ8lRCN3V43NU7TKO3cGPc-SupDvAcTRZiwZj8';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR6aG9zbHVheG5saGFxaHRwY3FuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUyNDE3MjMsImV4cCI6MjA5MDgxNzcyM30.XK8gPQZ8lRCN3V43NU7TKO3cGPc-SupDvAcTRZiwZj8';
 
 // بدء الاتصال بالمكتبة
 const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
