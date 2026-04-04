@@ -1,42 +1,27 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
     <title>ROLEX - شحن</title>
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        body { font-family: sans-serif; background: #f4f7f6; margin: 0; padding-bottom: 80px; text-align: center; }
-        .card { background: white; margin: 15px; padding: 20px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-        .address { background: #f9f9f9; border: 1px dashed #00a8ff; padding: 10px; border-radius: 8px; font-size: 11px; margin: 10px 0; word-break: break-all; }
-        input { width: 90%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 8px; }
-        .btn { background: #00a8ff; color: white; border: none; padding: 12px 30px; border-radius: 10px; width: 90%; font-weight: bold; }
-        .bottom-nav { position: fixed; bottom: 0; width: 100%; background: #fff; display: flex; justify-content: space-around; padding: 10px 0; border-top: 1px solid #eee; }
-        .nav-item { color: #aaa; text-decoration: none; font-size: 11px; }
-    </style>
 </head>
 <body onload="loadHistory('شحن', 'dep-hist')">
-    <div style="padding:15px; background:#fff; color:#00a8ff; font-weight:bold; border-bottom:1px solid #eee;">شحن الأصول</div>
+    <div style="padding:20px; text-align:center; font-size:24px; color:var(--gold-color);">إيداع الأصول الملكية</div>
     
-    <div class="card">
-        <h4>إيداع USDT (TRC20)</h4>
-        <div class="address">TA3uvkYmFmWhJ5DePkgWN8y1rVt6sxbpZB</div>
-        <input type="number" id="amount" placeholder="أدخل المبلغ الذي حولته">
-        <button class="btn" onclick="submitTransaction('شحن', document.getElementById('amount').value)">تأكيد الشحن</button>
+    <div class="card-premium">
+        <div style="color:var(--gold-color); margin-bottom:10px;">عنوان الإيداع (TRC20):</div>
+        <div style="background:rgba(255,255,255,0.05); padding:10px; border-radius:8px; font-size:12px; word-break:break-all;">TA3uvkYmFmWhJ5DePkgWN8y1rVt6sxbpZB</div>
+        <input type="number" id="amount" placeholder="المبلغ المشحون" style="width:100%; padding:12px; margin-top:10px; border-radius:8px; border:1px solid rgba(255,255,255,0.1); background:transparent; color:white;">
+        <button class="btn-gold" onclick="submitTransaction('شحن', document.getElementById('amount').value)" style="margin-top:15px;">تأكيد الإيداع</button>
     </div>
 
-    <div class="card">
-        <h4>سجل الشحن</h4>
-        <table style="width:100%; border-collapse: collapse;">
+    <div class="card-premium">
+        <div style="color:var(--text-gray); margin-bottom:10px;">سجل الشحن:</div>
+        <table style="width:100%; text-align:center;">
             <tbody id="dep-hist"></tbody>
         </table>
     </div>
-
-    <nav class="bottom-nav">
-        <a href="deposit.html" class="nav-item" style="color:#00a8ff;"><i class="fas fa-wallet" style="display:block; font-size:20px;"></i>شحن</a>
-        <a href="withdraw.html" class="nav-item"><i class="fas fa-university" style="display:block; font-size:20px;"></i>سحب</a>
-        <a href="tasks.html" class="nav-item"><i class="fas fa-tasks" style="display:block; font-size:20px;"></i>المهمة</a>
-        <a href="profile.html" class="nav-item"><i class="fas fa-user" style="display:block; font-size:20px;"></i>ملفي</a>
-    </nav>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="api.js"></script>
