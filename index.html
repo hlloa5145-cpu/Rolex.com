@@ -3,144 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ROLEX - منصة الأصول</title>
+    <title>ROLEX - الدخول</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* الألوان المعتمدة: أبيض، رصاصي، أزرق فاتح */
-        :root {
-            --main-white: #ffffff;
-            --light-grey: #f4f7f6;
-            --dark-grey: #4a4a4a;
-            --sky-blue: #00a8ff;
-            --glow-blue: rgba(0, 168, 255, 0.5);
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--light-grey);
-            color: var(--dark-grey);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            overflow: hidden;
-        }
-
-        .auth-card {
-            background: var(--main-white);
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            width: 90%;
-            max-width: 380px;
-            text-align: center;
-            border: 1px solid #e0e0e0;
-        }
-
-        .logo {
-            font-size: 32px;
-            font-weight: 800;
-            color: var(--sky-blue);
-            letter-spacing: 2px;
-            margin-bottom: 30px;
-            text-transform: uppercase;
-        }
-
-        input {
-            width: 100%;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 10px;
-            border: 1px solid #ddd;
-            background: #f9f9f9;
-            box-sizing: border-box;
-            outline: none;
-            transition: 0.3s;
-        }
-
-        input:focus { border-color: var(--sky-blue); }
-
-        button {
-            width: 100%;
-            padding: 15px;
-            border-radius: 10px;
-            border: none;
-            background: var(--sky-blue);
-            color: white;
-            font-weight: bold;
-            font-size: 16px;
-            cursor: pointer;
-            margin-top: 15px;
-            transition: 0.3s;
-        }
-
-        button:hover { background: #0097e6; }
-
-        /* الزر اللي بيلمع (تواصل معنا) */
-        .support-btn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            background-color: var(--sky-blue);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 24px;
-            text-decoration: none;
-            box-shadow: 0 0 0 0 var(--glow-blue);
-            animation: pulse-blue 2s infinite;
-            z-index: 1000;
-        }
-
-        @keyframes pulse-blue {
-            0% { transform: scale(0.95); box-shadow: 0 0 0 0 var(--glow-blue); }
-            70% { transform: scale(1); box-shadow: 0 0 0 20px rgba(0, 168, 255, 0); }
-            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 168, 255, 0); }
-        }
-
-        p { font-size: 14px; margin-top: 20px; cursor: pointer; color: var(--sky-blue); }
+        :root { --main-white: #ffffff; --light-grey: #f4f7f6; --sky-blue: #00a8ff; }
+        body { font-family: sans-serif; background: var(--light-grey); display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .auth-card { background: var(--main-white); padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); width: 350px; text-align: center; }
+        .logo { font-size: 28px; font-weight: bold; color: var(--sky-blue); margin-bottom: 20px; }
+        input { width: 100%; padding: 12px; margin: 8px 0; border-radius: 8px; border: 1px solid #ddd; box-sizing: border-box; }
+        button { width: 100%; padding: 12px; border-radius: 8px; border: none; background: var(--sky-blue); color: white; font-weight: bold; cursor: pointer; }
+        p { font-size: 13px; color: var(--sky-blue); cursor: pointer; margin-top: 15px; }
     </style>
 </head>
 <body>
-
     <div class="auth-card">
         <div class="logo">ROLEX</div>
-        
-        <div id="auth-box">
-            <h3 id="form-title">تسجيل الدخول</h3>
-            <input type="email" id="email" placeholder="البريد الإلكتروني">
-            <input type="password" id="pass" placeholder="كلمة المرور">
-            <button onclick="submitAuth()">دخول للمنصة</button>
-            <p onclick="toggleForm()" id="toggle-text">إنشاء حساب أصول جديد</p>
+        <div id="login-form">
+            <h3>تسجيل الدخول</h3>
+            <input type="email" id="l-email" placeholder="البريد الإلكتروني">
+            <input type="password" id="l-pass" placeholder="كلمة المرور">
+            <button onclick="handleLogin(document.getElementById('l-email').value, document.getElementById('l-pass').value)">دخول</button>
+            <p onclick="document.getElementById('login-form').style.display='none'; document.getElementById('reg-form').style.display='block';">إنشاء حساب جديد</p>
+        </div>
+        <div id="reg-form" style="display:none;">
+            <h3>إنشاء حساب</h3>
+            <input type="text" id="r-name" placeholder="الاسم الكامل">
+            <input type="email" id="r-email" placeholder="البريد الإلكتروني">
+            <input type="password" id="r-pass" placeholder="كلمة المرور">
+            <input type="text" id="r-invite" placeholder="كود الدعوة">
+            <button onclick="handleRegister(document.getElementById('r-name').value, document.getElementById('r-email').value, document.getElementById('r-pass').value, document.getElementById('r-invite').value)">تسجيل</button>
+            <p onclick="location.reload()">لديك حساب؟ دخول</p>
         </div>
     </div>
 
-    <a href="https://t.me/Btcun1995" target="_blank" class="support-btn">
-        <i class="fab fa-telegram-plane"></i>
-    </a>
-
-    <script>
-        // هنا رح نربط الكود مع Supabase لاحقاً
-        function toggleForm() {
-            const title = document.getElementById('form-title');
-            const btn = document.querySelector('button');
-            const toggle = document.getElementById('toggle-text');
-            
-            if (title.innerText === "تسجيل الدخول") {
-                title.innerText = "إنشاء حساب";
-                btn.innerText = "تأكيد التسجيل";
-                toggle.innerText = "لديك حساب؟ سجل دخولك";
-            } else {
-                title.innerText = "تسجيل الدخول";
-                btn.innerText = "دخول للمنصة";
-                toggle.innerText = "إنشاء حساب أصول جديد";
-            }
-        }
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="api.js"></script>
 </body>
 </html>
